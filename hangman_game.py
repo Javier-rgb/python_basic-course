@@ -13,10 +13,10 @@ def display_screen(word):
         empty.append("_")
     return empty
 
-def get_position(x, array):
+def get_position(x, array, empty):
     for i, value in enumerate(array):
         if value == x:
-            print(i)
+            empty[i] = x
 
 
 
@@ -36,9 +36,11 @@ def run():
 
     empty = display_screen(new_array)
 
+    #empty[0] = 'a'
+
     #new_dix = {letter: new_array.index(letter) for letter in new_array}
 
-    get_position('a', new_array)
+    get_position('a', new_array, empty)
 
     print(secret_word)
     print(new_array)
