@@ -25,11 +25,19 @@ def run():
     secret_array.pop(len(secret_array) - 1) # Removing '\n'
 
     empty = display_screen(secret_array)
+
+    os.system("clear")
     
     while empty != secret_array:
+        if energy == 0:
+            print("You lose")
+            sys.exit()
+        
         print("Welcome to Hangman Game [type EXIT to quit] \tEnergy: " + str(energy))
         # print(secret_array)
         print(empty)
+
+        empty_aux = empty.copy()
 
         letter = input("type a letter: ").upper()
         if letter == "EXIT":
@@ -40,7 +48,11 @@ def run():
             if value == letter:
                 empty[i] = letter
 
+        if empty_aux == empty:
+            energy = energy - 1
+        
         os.system("clear")
+
 
 if __name__ == '__main__':
     run()
